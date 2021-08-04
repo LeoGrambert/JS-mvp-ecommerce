@@ -1,0 +1,38 @@
+{
+  "name": "orinoco",
+  "version": "1.0.0",
+  "description": "Frontend application for orinoco ecommerce using javascript.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "start": "webpack serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/openclassrooms10/webdevpath_p5.git"
+  },
+  "keywords": [
+    "ecommerce",
+    "javascript",
+    "frontend"
+  ],
+  "author": "Leo Grambert",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/openclassrooms10/webdevpath_p5/issues"
+  },
+  "homepage": "https://gitlab.com/openclassrooms10/webdevpath_p5#readme",
+  "devDependencies": {
+    "@babel/core": "^7.14.8",
+    "@babel/preset-env": "^7.14.9",
+    "babel-loader": "^8.2.2",
+    "babel-polyfill": "^6.26.0",
+    "webpack": "^5.48.0",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "dependencies": {
+    "webpack-serve": "^4.0.0"
+  }
+}
