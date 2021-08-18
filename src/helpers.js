@@ -1,8 +1,7 @@
 const convertAndDisplayPrice = (price) => {
   try {
-    return `${price / 100} €`
+    return `${(price / 100).toFixed(2)} €`;
   } catch (err) {
-    console.error(err);
     throw err;
   }
 };
