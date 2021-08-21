@@ -1,5 +1,5 @@
-import getProducts from "../queries.js";
-import { convertAndDisplayPrice, svgWishlistHtml } from "../helpers.js";
+import getProducts from "../utils/queries.js";
+import { convertAndDisplayPrice, svgWishlistHtml } from "../utils/helpers.js";
 
 const products = async () => {
   const products = await getProducts();

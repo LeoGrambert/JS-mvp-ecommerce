@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Frontend application for orinoco ecommerce using javascript.",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
@@ -27,6 +26,7 @@
   "devDependencies": {
     "@babel/core": "^7.14.8",
     "@babel/preset-env": "^7.14.9",
+    "@types/node": "^16.7.1",
     "babel-loader": "^8.2.2",
     "babel-polyfill": "^6.26.0",
     "webpack": "^5.48.0",
@@ -34,6 +34,7 @@
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
+    "tailwind-toast": "^1.1.0",
     "webpack-serve": "^4.0.0"
   }
 }

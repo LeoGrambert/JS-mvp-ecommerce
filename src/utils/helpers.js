@@ -1,8 +1,10 @@
+import notify from "./toast";
+
 const convertAndDisplayPrice = (price) => {
   try {
     return `${(price / 100).toFixed(2)} €`;
   } catch (err) {
-    throw err;
+    notify(err.message, "danger");
   }
 };
 
