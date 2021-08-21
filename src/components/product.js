@@ -1,5 +1,5 @@
-const product = async () =>{
-    console.log(1);
-}
+const product = async () => {
+  return;
+};
 
 export default product;

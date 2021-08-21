@@ -1,5 +1,5 @@
 const order = async () => {
-  console.log(1);
+  return;
 };
 
 export default order;
