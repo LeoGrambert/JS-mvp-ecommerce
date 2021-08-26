@@ -1,37 +1,42 @@
-import getProducts from './queries.js';
-import { convertAndDisplayPrice, svgWishlistHtml } from "./helpers.js";
+import products from './components/products';
+import product from './components/product';
+import cart from './components/cart';
+import order from './components/order';
 
-(async function () {
-    const products = await getProducts();
-    const productsDom = document.querySelector("#products");
+const main = async () => {
+  switch (window.location.pathname) {
+    case '/':
+      await products();
+      break;
+    case '/pages/product.html':
+      await product();
+      break;
+    case '/pages/cart.html':
+      await cart();
+      break;
+    case '/pages/order.html':
+      await order();
+      break;
+    default:
+      await products();
+  }
+};
 
-    const createProductsInDom = (products) => products.map((product, index) => hydrateProduct(product, index));
+main();
 
-    const hydrateProduct = (product, index) => {
-      const container = document.createElement('div');
-      const link = document.createElement("a");
-      const img = document.createElement("img");
-      const blocNameWishlisth = document.createElement("div");
-      const name = document.createElement("p");
-      const svg = document.createElement("span");
-      const price = document.createElement("div");
-      container.className = `w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col product_${index}`;
-      link.href = `../pages/product.html?id=${product._id}`;
-      img.className = 'hover:grow hover:shadow-lg';
-      img.src = product.imageUrl;
-      blocNameWishlisth.className = "pt-3 flex items-center justify-between";
-      name.innerText = product.name;
-      svg.innerHTML = svgWishlistHtml();
-      price.className = 'pt-1 text-gray-900';
-      price.innerText = convertAndDisplayPrice(product.price);
-      blocNameWishlisth.appendChild(name);
-      blocNameWishlisth.appendChild(svg);
-      link.appendChild(img);
-      link.appendChild(blocNameWishlisth);
-      link.appendChild(price);
-      container.appendChild(link);
-      productsDom.appendChild(container);
-    };
-
-    createProductsInDom(products);
-})();
+// TODO handle add to cart with local storage
+// TODO pastille nb de produits au panier
+// TODO display cart page
+// TODO qties
+// TODO remove product
+// TODO Empty msg if cart empty
+// TODO Formulaire de paiement -> vérifications front
+// TODO stripe
+// TODO POST request & localstorage order
+// TODO display order page
+// TODO refacto classes product, cart & order
+// TODO check responsive
+// TODO ajouter des produits au back
+// TODO héberger le back heroku
+// TODO mettre en ligne front
+// TODO ajouter au cv et sur portfolio
