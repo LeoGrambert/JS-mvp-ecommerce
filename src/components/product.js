@@ -26,17 +26,11 @@ const hydrateProduct = (product) => {
     'Add to cart'
   );
   const svgContainer = createGenericElement('span', 'w-3/12 block m-auto cursor-pointer', svgWishlistHtml());
-  leftBlock.appendChild(image);
-  rightBlock.appendChild(name);
-  rightBlock.appendChild(price);
-  rightBlock.appendChild(displaySelectForCombinations(product));
-  rightBlock.appendChild(description);
-  rightBlock.appendChild(btnContainer);
-  btnContainer.appendChild(btn);
-  btnContainer.appendChild(svgContainer);
-  container.appendChild(leftBlock);
-  container.appendChild(rightBlock);
-  productDom.appendChild(container);
+  leftBlock.append(image);
+  rightBlock.append(name, price, displaySelectForCombinations(product), description, btnContainer);
+  btnContainer.append(btn, svgContainer);
+  container.append(leftBlock, rightBlock);
+  productDom.append(container);
 
   btn.addEventListener('click', (event) => {
     event.preventDefault();

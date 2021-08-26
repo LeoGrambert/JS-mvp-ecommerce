@@ -19,13 +19,10 @@ const products = async () => {
     const name = createGenericElement('p', null, product.name);
     const svgContainer = createGenericElement('span', null, svgWishlistHtml());
     const price = createGenericElement('div', 'pt-1 text-gray-900', convertAndDisplayPrice(product.price));
-    blocNameWishlist.appendChild(name);
-    blocNameWishlist.appendChild(svgContainer);
-    link.appendChild(img);
-    link.appendChild(blocNameWishlist);
-    link.appendChild(price);
-    container.appendChild(link);
-    productsDom.appendChild(container);
+    blocNameWishlist.append(name, svgContainer);
+    link.append(img, blocNameWishlist, price);
+    container.append(link);
+    productsDom.append(container);
   };
 
   createProductsInDom(products);
