@@ -5,7 +5,6 @@ const product = async () => {
   const id = new URL(location.href).searchParams.get('id');
   const product = await getProducts(id);
   hydrateProduct(product);
-  console.log(product);
 };
 
 const hydrateProduct = (product) => {
@@ -47,6 +46,16 @@ const hydrateProduct = (product) => {
   container.appendChild(leftBlock);
   container.appendChild(rightBlock);
   productDom.appendChild(container);
+
+  btn.addEventListener('click', (event) => {
+    event.preventDefault();
+    const cart = getCart();
+    cart.nb_products++;
+    cart.total_price += product.price;
+    cart.products = [...cart.products, product];
+    setCart(cart);
+    location.replace('/pages/cart.html');
+  });
 };
 
 const displaySelectForCombinations = (product) => {
@@ -61,5 +70,16 @@ const displaySelectForCombinations = (product) => {
   });
   return select;
 };
+
+const getCart = () =>
+  localStorage.getItem('cart')
+    ? JSON.parse(localStorage.getItem('cart'))
+    : {
+        nb_products: 0,
+        total_price: 0,
+        products: [],
+      };
+
+const setCart = (cart) => localStorage.setItem('cart', JSON.stringify(cart));
 
 export default product;
