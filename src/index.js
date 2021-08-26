@@ -34,14 +34,13 @@ const displayBadgeCart = () => {
 main();
 displayBadgeCart();
 
-// TODO display cart page
 // TODO handle qties
 // TODO remove product
-// TODO Empty msg if cart empty
-// TODO Formulaire de paiement -> vérifications front
+// TODO Formulaire de paiement
 // TODO stripe
 // TODO POST request & localstorage order
 // TODO display order page
+// TODO validation front du formulaire
 // TODO refacto classes product, cart & order
 // TODO check responsive
 // TODO ajouter des produits au back

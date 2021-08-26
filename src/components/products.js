@@ -17,7 +17,7 @@ const products = async () => {
     ]);
     const blocNameWishlist = createGenericElement('div', 'pt-3 flex items-center justify-between');
     const name = createGenericElement('p', null, product.name);
-    const svgContainer = createGenericElement('span', null, svgWishlistHtml());
+    const svgContainer = createGenericElement('span', null, svgWishlistHtml);
     const price = createGenericElement('div', 'pt-1 text-gray-900', convertAndDisplayPrice(product.price));
     blocNameWishlist.append(name, svgContainer);
     link.append(img, blocNameWishlist, price);

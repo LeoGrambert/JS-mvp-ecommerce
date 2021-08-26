@@ -1,5 +1,5 @@
 import getProducts from '../utils/queries';
-import { convertAndDisplayPrice, svgWishlistHtml, createGenericElement } from '../utils/helpers';
+import { convertAndDisplayPrice, svgWishlistHtml, createGenericElement, btnClass } from '../utils/helpers';
 
 const product = async () => {
   const id = new URL(location.href).searchParams.get('id');
@@ -10,8 +10,8 @@ const product = async () => {
 const hydrateProduct = (product) => {
   const productDom = document.querySelector('#product');
   const container = createGenericElement('div', 'flex');
-  const leftBlock = createGenericElement('div', 'w-2/4 mt-1');
-  const rightBlock = createGenericElement('div', 'w-2/4 ml-8');
+  const leftBlock = createGenericElement('div', 'w-3/5 mt-1');
+  const rightBlock = createGenericElement('div', 'w-2/5 ml-8');
   const image = createGenericElement('img', null, null, [
     { key: 'alt', value: product.name },
     { key: 'src', value: product.imageUrl },
@@ -20,34 +20,32 @@ const hydrateProduct = (product) => {
   const price = createGenericElement('div', 'mt-4 mb-4', convertAndDisplayPrice(product.price));
   const description = createGenericElement('div', 'mt-4 mb-4', product.description);
   const btnContainer = createGenericElement('div', 'flex');
-  const btn = createGenericElement(
-    'button',
-    'bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l w-9/12',
-    'Add to cart'
-  );
-  const svgContainer = createGenericElement('span', 'w-3/12 block m-auto cursor-pointer', svgWishlistHtml());
+  const btn = createGenericElement('button', `${btnClass} w-9/12`, 'Add to cart');
+  const svgContainer = createGenericElement('span', 'w-3/12 block m-auto cursor-pointer', svgWishlistHtml);
   leftBlock.append(image);
   rightBlock.append(name, price, displaySelectForCombinations(product), description, btnContainer);
   btnContainer.append(btn, svgContainer);
   container.append(leftBlock, rightBlock);
   productDom.append(container);
 
-  btn.addEventListener('click', (event) => {
-    event.preventDefault();
+  btn.addEventListener('click', () => {
     const cart = getCart();
+    const varnish = document.querySelector('#varnish').value;
     cart.nb_products++;
     cart.total_price += product.price;
-    cart.products = [...cart.products, product];
+    cart.products = [...cart.products, { ...product, varnish }];
     setCart(cart);
     location.replace('/pages/cart.html');
   });
 };
 
 const displaySelectForCombinations = (product) => {
-  const select = createGenericElement('select', 'block w-2/4 mt-4 mt-4 cursor-pointer');
+  const select = createGenericElement('select', 'block w-2/4 mt-4 mt-4 cursor-pointer', null, [
+    { key: 'id', value: 'varnish' },
+  ]);
   product.varnish.map((combination, key) => {
     const option = createGenericElement('option', `${combination}-${key}`, combination, [
-      { key: 'value', value: 'combination' },
+      { key: 'value', value: combination },
     ]);
     select.appendChild(option);
   });
