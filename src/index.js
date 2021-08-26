@@ -1,7 +1,7 @@
 import products from './components/products';
 import product from './components/product';
 import cart from './components/cart';
-import order from './components/order'
+import order from './components/order';
 
 const main = async () => {
   switch (window.location.pathname) {
@@ -24,8 +24,6 @@ const main = async () => {
 
 main();
 
-// TODO linter, prettier, husky
-// TODO build product page and display product
 // TODO handle add to cart with local storage
 // TODO display cart page
 // TODO qties
@@ -37,3 +35,7 @@ main();
 // TODO display order page
 // TODO refacto classes product, cart & order
 // TODO check responsive
+// TODO ajouter des produits au back
+// TODO héberger le back heroku
+// TODO mettre en ligne front
+// TODO ajouter au cv et sur portfolio
