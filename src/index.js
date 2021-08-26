@@ -22,11 +22,20 @@ const main = async () => {
   }
 };
 
-main();
+const displayBadgeCart = () => {
+  if (!localStorage.getItem('cart')) return false;
+  const cart = JSON.parse(localStorage.getItem('cart'));
+  if (cart.nb_products === 0) return false;
+  const badgeElt = document.querySelector('#cart-qty');
+  badgeElt.classList.replace('bg-transparent', 'bg-gray-600');
+  badgeElt.querySelector('span').innerText = cart.nb_products;
+};
 
-// TODO pastille nb de produits au panier
+main();
+displayBadgeCart();
+
 // TODO display cart page
-// TODO qties
+// TODO handle qties
 // TODO remove product
 // TODO Empty msg if cart empty
 // TODO Formulaire de paiement -> vérifications front
