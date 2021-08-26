@@ -24,7 +24,6 @@ const main = async () => {
 
 main();
 
-// TODO handle add to cart with local storage
 // TODO pastille nb de produits au panier
 // TODO display cart page
 // TODO qties
