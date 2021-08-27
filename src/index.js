@@ -2,6 +2,7 @@ import products from './components/products';
 import product from './components/product';
 import cart from './components/cart';
 import order from './components/order';
+import { displayBadgeCart } from './utils/helpers';
 
 const main = async () => {
   switch (window.location.pathname) {
@@ -22,20 +23,9 @@ const main = async () => {
   }
 };
 
-const displayBadgeCart = () => {
-  if (!localStorage.getItem('cart')) return false;
-  const cart = JSON.parse(localStorage.getItem('cart'));
-  if (cart.nb_products === 0) return false;
-  const badgeElt = document.querySelector('#cart-qty');
-  badgeElt.classList.replace('bg-transparent', 'bg-gray-600');
-  badgeElt.querySelector('span').innerText = cart.nb_products;
-};
-
 main();
 displayBadgeCart();
 
-// TODO handle qties
-// TODO remove product
 // TODO Formulaire de paiement
 // TODO stripe
 // TODO POST request & localstorage order

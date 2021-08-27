@@ -31,7 +31,8 @@ const hydrateProduct = (product) => {
   btn.addEventListener('click', () => {
     const cart = getCart();
     const varnish = document.querySelector('#varnish').value;
-    const productsAlreadyInCart = returnIfAlreadyInCart(cart.products, product);
+    console.log(cart);
+    const productsAlreadyInCart = cart.products.length ? returnIfAlreadyInCart(cart.products, product) : [];
     cart.nb_products++;
     cart.total_price += product.price;
     if (productsAlreadyInCart.length) {
