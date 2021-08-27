@@ -31,13 +31,24 @@ const hydrateProduct = (product) => {
   btn.addEventListener('click', () => {
     const cart = getCart();
     const varnish = document.querySelector('#varnish').value;
+    const productsAlreadyInCart = returnIfAlreadyInCart(cart.products, product);
     cart.nb_products++;
     cart.total_price += product.price;
-    cart.products = [...cart.products, { ...product, varnish }];
+    if (productsAlreadyInCart.length) {
+      productsAlreadyInCart[0].qty++;
+      cart.products = [
+        ...cart.products.filter((cartProduct) => cartProduct._id !== product._id),
+        ...productsAlreadyInCart,
+      ];
+    } else {
+      cart.products = [...cart.products, { ...product, varnish, qty: 1 }];
+    }
     setCart(cart);
     location.replace('/pages/cart.html');
   });
 };
+
+const returnIfAlreadyInCart = (products, product) => products.filter((cartProduct) => cartProduct._id === product._id);
 
 const displaySelectForCombinations = (product) => {
   const select = createGenericElement('select', 'block w-2/4 mt-4 mt-4 cursor-pointer', null, [

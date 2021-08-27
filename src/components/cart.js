@@ -39,15 +39,15 @@ const hydrateProductsCart = (cartElt, products) => {
       { key: 'alt', value: product.name },
       { key: 'src', value: product.imageUrl },
     ]);
-    const information = createGenericElement('div', 'w-3/6 ml-10');
-    const name = createGenericElement('a', null, product.name, [
+    const information = createGenericElement('div', 'w-4/6 ml-10');
+    const name = createGenericElement('a', 'font-bold', product.name, [
       { key: 'href', value: `/pages/product.html?id=${product._id}` },
     ]);
-    const varnish = createGenericElement('div', null, product.varnish);
-    const qties = createGenericElement('div', 'w-1/6');
-    const price = createGenericElement('div', 'w-1/6', convertAndDisplayPrice(product.price));
-    information.append(name, varnish);
-    container.append(image, information, qties, price);
+    const varnish = createGenericElement('div', null, `Varnish: ${product.varnish}`);
+    const qties = createGenericElement('div', null, `Quantity: ${product.qty}`);
+    const price = createGenericElement('div', 'w-1/6', convertAndDisplayPrice(product.price * product.qty));
+    information.append(name, varnish, qties);
+    container.append(image, information, price);
     productsElt.append(container);
   });
   cartElt.append(productsElt);
