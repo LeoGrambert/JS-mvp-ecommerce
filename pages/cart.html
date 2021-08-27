@@ -45,9 +45,11 @@
                 </a>
             </div>
 
-            <div class="order-2 md:order-3 flex items-center" id="nav-content">
-
-                <a class="pl-3 inline-block no-underline hover:text-black" href="./pages/panier.html">
+            <div class="order-2 md:order-3 flex items-center relative" id="nav-content">
+                <div id="cart-qty" class="absolute rounded-full h-5 w-5 flex items-center justify-center bg-transparent text-white text-xs top-4 left-1">
+                    <span class="mr-px">0</span>
+                </div>
+                <a class="pl-3 inline-block no-underline hover:text-black" href="/pages/cart.html">
                     <svg class="fill-current hover:text-black" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                         viewBox="0 0 24 24">
                         <path
@@ -56,10 +58,60 @@
                         <circle cx="17.5" cy="18.5" r="1.5" />
                     </svg>
                 </a>
-
             </div>
         </div>
     </nav>
+
+    <section class="bg-white py-8">
+        <div class="container mx-auto flex items-center flex-wrap pt-4 pb-12">
+            <div class="container mx-auto flex items-center flex-wrap pt-4 pb-12" id ="cart"></div>
+            <div id="form" class="m-auto relative">
+                <form class="w-full max-w-lg">
+                    <div class="flex flex-wrap -mx-3 mb-6">
+                        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                                First Name
+                            </label>
+                            <input class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Jane">
+                            <p class="text-red-500 text-xs italic" id="grid-first-name-error"></p>
+                        </div>
+                        <div class="w-full md:w-1/2 px-3">
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
+                                Last Name
+                            </label>
+                            <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="Doe">
+                            <p class="text-red-500 text-xs italic" id="grid-last-name-error"></p>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap -mx-3 mb-6">
+                        <div class="w-full px-3">
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-address">
+                                Address
+                            </label>
+                            <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-address" type="text" placeholder="Great Russell St">
+                            <p class="text-red-500 text-xs italic" id="grid-address-error"></p>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap -mx-3 mb-2">
+                        <div class="w-full md:w-2/3 px-3 mb-6 md:mb-0">
+                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
+                            City
+                        </label>
+                        <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city" type="text" placeholder="London">
+                        <p class="text-red-500 text-xs italic" id="grid-city-error"></p>    
+                    </div>
+                    <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-zip">
+                            Zip
+                        </label>
+                        <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-zip" type="text" placeholder="90210">
+                        <p class="text-red-500 text-xs italic" id="grid-zip-error"></p>    
+                    </div>
+                    <button id="pay-order" class="ml-3 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l w-full max-w-lg mt-12">Pay your order</button>
+                </form>
+            </div>
+        </div>
+    </section>
 
     <footer class="container mx-auto bg-white py-8 border-t border-gray-400">
         <div class="container flex px-3 py-8 ">
