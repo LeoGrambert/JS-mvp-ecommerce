@@ -1,4 +1,4 @@
-import getProducts from '../utils/queries';
+import { getProducts } from '../utils/queries';
 import { convertAndDisplayPrice, svgWishlistHtml, createGenericElement, btnClass } from '../utils/helpers';
 
 const product = async () => {
