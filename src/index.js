@@ -28,7 +28,6 @@ const main = async () => {
 main();
 displayBadgeCart();
 
-// TODO POST request & localstorage order
 // TODO display order page
 // TODO validation front du formulaire
 // TODO refacto classes product, cart & order

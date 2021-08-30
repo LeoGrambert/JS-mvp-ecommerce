@@ -13,13 +13,13 @@ const notify = (message, type = 'default', duration = 8000) => {
   };
   switch (type) {
     case 'danger':
-      params.color = 'bg-red-500';
+      params.color = 'bg-red-400';
       return toast().danger('Error:', message).with(params).show();
     case 'warning':
-      params.color = 'bg-yellow-500';
+      params.color = 'bg-yellow-400';
       return toast().warning('Warn:', message).with(params).show();
     case 'success':
-      params.color = 'bg-green-500';
+      params.color = 'bg-green-400';
       return toast().success(type, message).with(params).show();
     default:
       return toast().default('Success', message).with(params).show();
