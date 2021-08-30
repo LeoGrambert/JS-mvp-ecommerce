@@ -1,4 +1,4 @@
-import { getInputValue } from '../utils/helpers';
+import { checkInputAddress, checkInputMail, checkInputName, getInputValue, removeInputError } from '../utils/helpers';
 import { postOrder } from '../utils/queries';
 
 const form = async () => {
@@ -10,6 +10,8 @@ const form = async () => {
   btn.addEventListener('click', async (e) => {
     e.preventDefault();
     const contact = getContact();
+    const formIsValid = checkForm(contact);
+    if (!formIsValid) return false;
     const objForPost = {
       contact,
       products: cart.products.map((product) => product._id),
@@ -37,6 +39,22 @@ const manageLocalStorage = (order) => {
   localStorage.removeItem('order');
   localStorage.setItem('order', JSON.stringify(order));
   localStorage.removeItem('cart');
+};
+
+const checkForm = (contact) => {
+  const isValid = {};
+  Object.entries(contact).map((input) => {
+    const key = input[0];
+    const value = input[1];
+    removeInputError(key);
+    if (key === 'firstName') isValid[key] = checkInputName(key, value);
+    if (key === 'lastName') isValid[key] = checkInputName(key, value);
+    if (key === 'email') isValid[key] = checkInputMail(key, value);
+    if (key === 'address') isValid[key] = checkInputAddress(key, value);
+    if (key === 'city') isValid[key] = checkInputAddress(key, value);
+  });
+  const wrongInput = Object.entries(isValid).filter(([key, value]) => !value);
+  return !wrongInput.length;
 };
 
 export default form;

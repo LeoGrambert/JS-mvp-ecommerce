@@ -28,8 +28,6 @@ const main = async () => {
 main();
 displayBadgeCart();
 
-// TODO display order page
-// TODO validation front du formulaire
 // TODO refacto classes product, cart & order
 // TODO check responsive
 // TODO ajouter des produits au back

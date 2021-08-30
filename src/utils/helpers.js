@@ -34,6 +34,54 @@ const getInputValue = (elt) => {
   return dom.value;
 };
 
+const checkInputName = (key, value) => {
+  if (value === '') {
+    displayInputError(key, `${key} field cannot be empty`);
+    return false;
+  }
+  if (value.match(/[0-9]/g)) {
+    displayInputError(key, `${key} field cannot contains number(s)`);
+    return false;
+  }
+  return true;
+};
+
+const checkInputMail = (key, value) => {
+  if (value === '') {
+    displayInputError(key, `${key} field cannot be empty`);
+    return false;
+  }
+  if (!value.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)) {
+    displayInputError(key, `wrong ${key} format`);
+    return false;
+  }
+  return true;
+};
+
+const checkInputAddress = (key, value) => {
+  if (value === '') {
+    displayInputError(key, `${key} field cannot be empty`);
+    return false;
+  }
+  if (value.length < 2) {
+    displayInputError(key, `${key} field is too short`);
+    return false;
+  }
+  return true;
+};
+
+const displayInputError = (key, err) => {
+  document.querySelector(`.${key} input`).classList.replace('border-gray-200', 'border-red-500');
+  document.querySelector(`.${key} p`).innerHTML = capitalizeFirstLetter(err);
+};
+
+const removeInputError = (key) => {
+  document.querySelector(`.${key} input`).classList.replace('border-red-500', 'border-gray-200');
+  document.querySelector(`.${key} p`).innerHTML = '';
+};
+
+const capitalizeFirstLetter = (str) => str.charAt(0).toUpperCase() + str.slice(1);
+
 const svgTrashHtml = `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
 </svg>`;
@@ -48,6 +96,10 @@ export {
   createGenericElement,
   displayBadgeCart,
   getInputValue,
+  checkInputName,
+  checkInputMail,
+  checkInputAddress,
+  removeInputError,
   svgWishlistHtml,
   svgTrashHtml,
   btnClass,
