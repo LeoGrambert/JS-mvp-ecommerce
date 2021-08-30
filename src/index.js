@@ -28,9 +28,9 @@ const main = async () => {
 main();
 displayBadgeCart();
 
-// TODO refacto classes product, cart & order
 // TODO check responsive
 // TODO ajouter des produits au back
 // TODO héberger le back heroku
 // TODO mettre en ligne front
+// TODO créer un compte test gitlab
 // TODO ajouter au cv et sur portfolio

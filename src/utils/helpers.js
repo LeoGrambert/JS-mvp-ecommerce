@@ -8,6 +8,8 @@ const convertAndDisplayPrice = (price) => {
   }
 };
 
+const getParam = (param) => new URL(location.href).searchParams.get(param);
+
 const createGenericElement = (type, classNa = null, text = null, attributes = []) => {
   try {
     const elt = document.createElement(type);
@@ -93,6 +95,7 @@ const btnClass = 'bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-
 
 export {
   convertAndDisplayPrice,
+  getParam,
   createGenericElement,
   displayBadgeCart,
   getInputValue,
