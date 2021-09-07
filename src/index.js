@@ -28,8 +28,6 @@ const main = async () => {
 main();
 displayBadgeCart();
 
-// TODO check responsive
-// TODO ajouter des produits au back
 // TODO héberger le back heroku
 // TODO mettre en ligne front
 // TODO créer un compte test gitlab
