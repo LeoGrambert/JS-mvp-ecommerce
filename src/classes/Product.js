@@ -25,14 +25,14 @@ export class Product {
   }
 
   createProductPage() {
-    const container = createGenericElement('div', 'flex');
-    const leftBlock = createGenericElement('div', 'w-3/5 mt-1');
-    const rightBlock = createGenericElement('div', 'w-2/5 ml-8');
+    const container = createGenericElement('div', 'flex flex-col md:flex-row');
+    const leftBlock = createGenericElement('div', 'w-full pr-3 pl-3 mt-1 md:w-3/5');
+    const rightBlock = createGenericElement('div', 'w-full pr-3 pl-3 md:w-2/5 md:ml-8');
     const image = createGenericElement('img', null, null, [
       { key: 'alt', value: this.name },
       { key: 'src', value: this.image },
     ]);
-    const name = createGenericElement('h1', 'mb-4 text-lg font-bold', this.name);
+    const name = createGenericElement('h1', 'mb-4 mt-4 text-lg font-bold md:mt-0', this.name);
     const price = createGenericElement('div', 'mt-4 mb-4', convertAndDisplayPrice(this.price));
     const description = createGenericElement('div', 'mt-4 mb-4', this.description);
     const btnContainer = createGenericElement('div', 'flex');

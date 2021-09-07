@@ -68,18 +68,22 @@ export class Cart {
   }
 
   displayProductCart(product) {
-    const container = createGenericElement('div', `flex w-full mt-2 mb-2 pt-4 pb-2`);
-    const image = createGenericElement('img', 'w-1/6 max-h-24 object-cover', null, [
+    const container = createGenericElement('div', `flex w-full mt-2 mb-2 pt-4 pb-2 flex-col md:flex-row`);
+    const image = createGenericElement('img', 'w-full max-h-24 object-cover md:w-1/6', null, [
       { key: 'alt', value: product.name },
       { key: 'src', value: product.image },
     ]);
-    const information = createGenericElement('div', 'w-4/6 ml-10 -mt-2');
+    const information = createGenericElement('div', 'w-full md:ml-10 mt-4 md:w-4/6 md:-mt-2');
     const name = createGenericElement('a', 'font-bold', product.name, [
       { key: 'href', value: `/pages/product.html?id=${product.id}` },
     ]);
     const varnish = createGenericElement('div', null, `Varnish: ${product.varnish}`);
     const qties = createGenericElement('div', null, `Quantity: ${product.qty}`);
-    const price = createGenericElement('div', 'w-1/6 text-right', convertAndDisplayPrice(product.price * product.qty));
+    const price = createGenericElement(
+      'div',
+      'w-full md:ml-10 mt-4 text-left md:text-right md:w-1/6',
+      convertAndDisplayPrice(product.price * product.qty)
+    );
     const svgContainer = createGenericElement('span', 'block cursor-pointer mt-2', svgTrashHtml, [
       { key: 'id', value: 'delete-from-cart' },
     ]);
