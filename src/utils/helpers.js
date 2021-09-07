@@ -1,11 +1,11 @@
 import notify from './toast';
 
-const convertAndDisplayPrice = (price) => {
-  try {
-    return `${(price / 100).toFixed(2)} €`;
-  } catch (err) {
-    notify(err.message, 'danger');
-  }
+const convertAndDisplayPrice = (price) => `${numberWithSpaces((price / 100).toFixed(2))} €`;
+
+const numberWithSpaces = (nb) => {
+  let parts = nb.toString().split('.');
+  parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+  return parts.join('.');
 };
 
 const getParam = (param) => new URL(location.href).searchParams.get(param);
