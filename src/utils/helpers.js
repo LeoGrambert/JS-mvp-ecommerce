@@ -36,37 +36,22 @@ const getInputValue = (elt) => {
   return dom.value;
 };
 
-const checkInputName = (key, value) => {
-  if (value === '') {
-    displayInputError(key, `${key} field cannot be empty`);
-    return false;
-  }
-  if (value.match(/[0-9]/g)) {
-    displayInputError(key, `${key} field cannot contains number(s)`);
-    return false;
-  }
-  return true;
-};
+const regexEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
-const checkInputMail = (key, value) => {
-  if (value === '') {
-    displayInputError(key, `${key} field cannot be empty`);
-    return false;
-  }
-  if (!value.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)) {
-    displayInputError(key, `wrong ${key} format`);
-    return false;
-  }
-  return true;
-};
+const regexName = /[a-zA-Z]/g;
 
-const checkInputAddress = (key, value) => {
+const checkInputRegex = (value, key, regex = null) => {
   if (value === '') {
     displayInputError(key, `${key} field cannot be empty`);
     return false;
   }
   if (value.length < 2) {
     displayInputError(key, `${key} field is too short`);
+    return false;
+  }
+  if (!regex) return true;
+  if (!value.match(regex)) {
+    displayInputError(key, `wrong ${key} format`);
     return false;
   }
   return true;
@@ -99,10 +84,10 @@ export {
   createGenericElement,
   displayBadgeCart,
   getInputValue,
-  checkInputName,
-  checkInputMail,
-  checkInputAddress,
+  checkInputRegex,
   removeInputError,
+  regexEmail,
+  regexName,
   svgWishlistHtml,
   svgTrashHtml,
   btnClass,

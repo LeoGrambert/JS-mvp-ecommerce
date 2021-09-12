@@ -1,6 +1,7 @@
 import { Cart } from '../classes/Cart';
 import { Order } from '../classes/Order';
-import { checkInputAddress, checkInputMail, checkInputName, getInputValue, removeInputError } from '../utils/helpers';
+import { checkInputRegex, regexName, regexEmail, getInputValue, removeInputError } from '../utils/helpers';
+import notify from '../utils/toast';
 
 const form = async () => {
   const myCart = new Cart();
@@ -10,7 +11,10 @@ const form = async () => {
     e.preventDefault();
     const contact = getContact();
     const formIsValid = checkForm(contact);
-    if (!formIsValid) return false;
+    if (!formIsValid) {
+      notify(`Incorrect form data`, 'danger');
+      return false;
+    }
     const myOrder = new Order({ contact, products: myCart.products.map((product) => product.id) });
     myOrder.postOrder();
   });
@@ -31,11 +35,11 @@ const checkForm = (contact) => {
     const key = input[0];
     const value = input[1];
     removeInputError(key);
-    if (key === 'firstName') isValid[key] = checkInputName(key, value);
-    if (key === 'lastName') isValid[key] = checkInputName(key, value);
-    if (key === 'email') isValid[key] = checkInputMail(key, value);
-    if (key === 'address') isValid[key] = checkInputAddress(key, value);
-    if (key === 'city') isValid[key] = checkInputAddress(key, value);
+    if (key === 'firstName') isValid[key] = checkInputRegex(value, key, regexName);
+    if (key === 'lastName') isValid[key] = checkInputRegex(value, key, regexName);
+    if (key === 'email') isValid[key] = checkInputRegex(value, key, regexEmail);
+    if (key === 'address') isValid[key] = checkInputRegex(value, key);
+    if (key === 'city') isValid[key] = checkInputRegex(value, key);
   });
   const wrongInput = Object.entries(isValid).filter(([key, value]) => !value);
   return !wrongInput.length;
