@@ -27,7 +27,3 @@ const main = async () => {
 
 main();
 displayBadgeCart();
-
-// TODO mettre en ligne front
-// TODO créer un compte test gitlab
-// TODO ajouter au cv et sur portfolio
