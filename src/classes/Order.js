@@ -51,7 +51,7 @@ export class Order {
     const customerService = createGenericElement(
       'div',
       'mb-2',
-      `If you have any question, please feel free to contact us at hello@orinoco.com with your order reference: <strong>${this.id}</strong>`
+      `If you have any question, please feel free to contact us at hello@aeki.com with your order reference: <strong>${this.id}</strong>`
     );
     const callToAction = createGenericElement('button', `${btnClass} mt-4`, 'Go back to shopping');
     container.append(title, deliveryMsg, confirmationMail, customerService, callToAction);

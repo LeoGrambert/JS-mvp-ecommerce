@@ -1,7 +1,7 @@
 {
-  "name": "orinoco",
+  "name": "mvp",
   "version": "1.0.0",
-  "description": "Frontend application for orinoco ecommerce using javascript.",
+  "description": "Frontend application for MVP ecommerce using javascript.",
   "main": "index.js",
   "scripts": {
     "lint:fix": "eslint \"src/**/*.js\" --fix",
